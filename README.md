@@ -15,7 +15,7 @@ Additionally, when the deploy finishes, plugin posts app details into a thread o
 ![Deployed app details](./assets/deployedAppDetails.png)
 
 ## Installation
-`@schibsted/serverless-slack-deploy-notification`
+`npm install @schibsted/serverless-slack-deploy-notification --save-dev`
 
 ## Options
 #### Required:
