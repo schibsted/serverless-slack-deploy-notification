@@ -1,0 +1,100 @@
+{
+    "env": {
+        "node": true
+    },
+    "extends": [
+        "airbnb-base",
+        "prettier"
+    ],
+    "globals": {},
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "script",
+        "ecmaFeatures": {
+            "modules": false
+        }
+    },
+    "plugins": [
+        "eslint-plugin-babel",
+        "prettier"
+    ],
+    "rules": {
+        "curly": ["error", "all"],
+        "global-require": "off",
+        "quotes": ["warn", "single", { "avoidEscape": true }],
+        "import/exports-last": "error",
+        "import/extensions": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/no-unresolved": [
+            "warn"
+        ],
+        "import/order": [
+            "error",
+            {
+                "newlines-between": "never"
+            }
+        ],
+        "no-irregular-whitespace": [
+            "error",
+            {
+                "skipComments": false,
+                "skipRegExps": false,
+                "skipStrings": false,
+                "skipTemplates": false
+            }
+        ],
+        "no-plusplus": [
+            "error",
+            {
+                "allowForLoopAfterthoughts": true
+            }
+        ],
+        "no-use-before-define": [
+            "error",
+            {
+                "classes": true,
+                "functions": false,
+                "variables": true
+            }
+        ],
+        "padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "next": "return",
+                "prev": "*"
+            },
+            {
+                "blankLine": "any",
+                "next": "return",
+                "prev": [
+                    "block-like",
+                    "const",
+                    "let",
+                    "var"
+                ]
+            },
+            {
+                "blankLine": "always",
+                "next": "export",
+                "prev": "*"
+            },
+            {
+                "blankLine": "any",
+                "next": "export",
+                "prev": "export"
+            }
+        ],
+        "prefer-destructuring": "off",
+        "prefer-promise-reject-errors": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "printWidth": 120,
+                "singleQuote": true,
+                "tabWidth": 4,
+                "trailingComma": "es5"
+            }
+        ]
+    }
+}

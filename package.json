@@ -1,0 +1,59 @@
+{
+  "name": "@schibsted/serverless-slack-deploy-notification",
+  "version": "0.1.0",
+  "description": "Serverless plugin that sends a slack message on deployment start and finish",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "prettier": "prettier --write"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix"
+    ],
+    "*.json": [
+      "npm run prettier"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schibsted/serverless-slack-deploy-notification.git"
+  },
+  "keywords": [
+    "serverless",
+    "slack",
+    "deploy",
+    "deployment",
+    "notification"
+  ],
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/schibsted/serverless-slack-deploy-notification/issues"
+  },
+  "homepage": "https://github.com/schibsted/serverless-slack-deploy-notification#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "http-errors": "^1.8.0",
+    "husky": "^4.3.7",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "@slack/web-api": "^6.0.0",
+    "dayjs": "^1.10.3",
+    "ramda": "^0.27.1"
+  }
+}

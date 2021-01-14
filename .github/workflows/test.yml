@@ -1,0 +1,21 @@
+name: "Lint & test"
+on: [pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '14' ]
+    name: Lint on Node ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: ${{ matrix.node }}
+          check-latest: true
+      - run: npm ci --quiet
+      - uses: bradennapier/eslint-plus-action@v3.4.2
+        with:
+          issueSummaryOnlyOnEvent: true
+          npmInstall: false
