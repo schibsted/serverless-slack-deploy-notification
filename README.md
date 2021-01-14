@@ -3,6 +3,19 @@
 # Serverless Slack deploy notification
 A Serverless plugin that sends a slack message on deployment start and finish
 
+## Demo
+When deployment starts plugin posts a message like this:
+![Deployment in progress](./assets/deployInProgress.png)
+
+When deployment finishes successfully plugin updates the first message into:
+![Deployment finished successfully](./assets/deployFinished.png)
+
+**Sadly there's no way to detect a deployment error and send a notification then. 
+In that case you get stuck on the 'deployment in progress' notification**
+
+Additionally, when the deploy finishes, plugin posts app details into a thread of the notification e.g.
+![Deployed app details](./assets/deployedAppDetails.png)
+
 ## Installation
 `@schibsted/serverless-slack-deploy-notification`
 
@@ -40,7 +53,7 @@ custom:
     appUrl: https://google.com
 
 plugins:
-  - @schibsted/serverless-slack-deploy-notification
+  - "@schibsted/serverless-slack-deploy-notification"
 
 functions:
   foo:
