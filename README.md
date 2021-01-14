@@ -1,5 +1,3 @@
-# serverless-slack-deploy-notification
-
 # Serverless Slack deploy notification
 A Serverless plugin that sends a slack message on deployment start and finish
 
