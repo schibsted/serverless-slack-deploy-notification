@@ -384,7 +384,9 @@ class ServerlessPluginNotification {
         } catch (error) {
             // Check the code property, and when its a PlatformError, log the whole response.
             if (error.code === ErrorCode.PlatformError) {
-                this.serverless.cli.log(error.data, this.pluginName, { color: 'red' });
+                this.serverless.cli.log(`Slack API error: ${JSON.stringify(error.data)}`, this.pluginName, {
+                    color: 'red',
+                });
             } else {
                 // Some other error, oh no!
                 this.serverless.cli.log(`Slack API error: ${error.message}`, this.pluginName, { color: 'red' });
@@ -393,7 +395,7 @@ class ServerlessPluginNotification {
     }
 
     async afterDeploy() {
-        if (this.config.enabled[this.stage] === false) {
+        if (this.config.enabled[this.stage] === false || !this.deploymentStartMessage) {
             return;
         }
 
@@ -417,7 +419,9 @@ class ServerlessPluginNotification {
         } catch (error) {
             // Check the code property, and when its a PlatformError, log the whole response.
             if (error.code === ErrorCode.PlatformError) {
-                this.serverless.cli.log(error.data, this.pluginName, { color: 'red' });
+                this.serverless.cli.log(`Slack API error: ${JSON.stringify(error.data)}`, this.pluginName, {
+                    color: 'red',
+                });
             } else {
                 // Some other error, oh no!
                 this.serverless.cli.log(`Slack API error: ${error.message}`, this.pluginName, { color: 'red' });
