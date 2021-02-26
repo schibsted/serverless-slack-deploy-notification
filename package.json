@@ -1,6 +1,6 @@
 {
   "name": "@schibsted/serverless-slack-deploy-notification",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Serverless plugin that sends a slack message on deployment start and finish",
   "main": "index.js",
   "scripts": {
@@ -54,6 +54,7 @@
   "dependencies": {
     "@slack/web-api": "^6.0.0",
     "dayjs": "^1.10.3",
-    "ramda": "^0.27.1"
+    "ramda": "^0.27.1",
+    "slackify-markdown": "^4.1.0"
   }
 }
