@@ -2,6 +2,7 @@ const { WebClient, retryPolicies, ErrorCode } = require('@slack/web-api');
 const R = require('ramda');
 const dayjs = require('dayjs');
 const relativeTime = require('dayjs/plugin/relativeTime');
+const slackifyMarkdown = require('slackify-markdown');
 
 dayjs.extend(relativeTime);
 
@@ -202,6 +203,10 @@ class ServerlessPluginNotification {
             this.custom().deployer ||
             'Unnamed deployer';
         const currentRevision = require('child_process').execSync('git rev-parse HEAD').toString().trim().slice(0, 7);
+        const currentCommitMessage = require('child_process')
+            .execSync('git show -s --format=%B HEAD')
+            .toString()
+            .trim();
 
         return {
             text: !this.finishedAt
@@ -220,6 +225,13 @@ class ServerlessPluginNotification {
                 },
                 {
                     type: 'divider',
+                },
+                {
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: slackifyMarkdown(currentCommitMessage),
+                    },
                 },
                 {
                     type: 'section',
