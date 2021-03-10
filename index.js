@@ -22,6 +22,8 @@ class ServerlessPluginNotification {
             },
         };
         this.awsDeploymentInfo = null;
+        this.currentRevision = require('child_process').execSync('git rev-parse HEAD').toString().trim().slice(0, 7);
+        this.currentCommitMessage = require('child_process').execSync('git show -s --format=%B HEAD').toString().trim();
 
         this.hooks = {
             // service configuration is final
@@ -193,6 +195,19 @@ class ServerlessPluginNotification {
         return layersMessage;
     }
 
+    displayCommitMessage() {
+        return R.pipe(
+            R.splitEvery(3000),
+            R.map((chunk) => ({
+                type: 'section',
+                text: {
+                    type: 'mrkdwn',
+                    text: chunk,
+                },
+            }))
+        )(slackifyMarkdown(this.currentCommitMessage));
+    }
+
     generateMessage() {
         const deployer =
             process.env.USER ||
@@ -202,11 +217,6 @@ class ServerlessPluginNotification {
             process.env.LNAME ||
             this.custom().deployer ||
             'Unnamed deployer';
-        const currentRevision = require('child_process').execSync('git rev-parse HEAD').toString().trim().slice(0, 7);
-        const currentCommitMessage = require('child_process')
-            .execSync('git show -s --format=%B HEAD')
-            .toString()
-            .trim();
 
         return {
             text: !this.finishedAt
@@ -226,13 +236,7 @@ class ServerlessPluginNotification {
                 {
                     type: 'divider',
                 },
-                {
-                    type: 'section',
-                    text: {
-                        type: 'mrkdwn',
-                        text: slackifyMarkdown(currentCommitMessage),
-                    },
-                },
+                ...this.displayCommitMessage(),
                 {
                     type: 'section',
                     accessory: this.config.logo && {
@@ -304,14 +308,14 @@ class ServerlessPluginNotification {
                                 url: `${this.config.travisUrl}/builds/${process.env.TRAVIS_BUILD_ID}`,
                             },
                         this.config.githubUrl &&
-                            currentRevision && {
+                            this.currentRevision && {
                                 type: 'button',
                                 text: {
                                     type: 'plain_text',
-                                    text: `:github: ${currentRevision}`,
+                                    text: `:github: ${this.currentRevision}`,
                                     emoji: true,
                                 },
-                                url: `${this.config.githubUrl}/commit/${currentRevision}`,
+                                url: `${this.config.githubUrl}/commit/${this.currentRevision}`,
                             },
                     ].filter(Boolean),
                 },
