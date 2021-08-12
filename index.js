@@ -15,7 +15,7 @@ class ServerlessPluginNotification {
         this.startedAt = null;
         this.deploymentStartMessage = null;
         this.finishedAt = null;
-        this.stage = this.options.stage || this.provider.stage;
+        this.stage = this.options.stage || this.service.provider.stage || 'dev';
         this.config = {
             enabled: {
                 [this.stage]: true,
@@ -38,10 +38,7 @@ class ServerlessPluginNotification {
     }
 
     initializePlugin() {
-        this.config = R.mergeDeepRight(
-            this.config,
-            R.propOr({}, 'slackDeployNotification', this.serverless.service.custom)
-        );
+        this.config = R.mergeDeepRight(this.config, R.propOr({}, 'slackDeployNotification', this.service.custom));
 
         if (!this.isConfigValid()) {
             this.serverless.cli.log('Required params missing (token, channel)', this.pluginName, { color: 'red' });
@@ -106,7 +103,7 @@ class ServerlessPluginNotification {
             info.endpoints.forEach((endpoint) => {
                 // if the endpoint is of type http(s)
                 if (endpoint.startsWith('https://')) {
-                    Object.values(this.serverless.service.functions).forEach((functionObject) => {
+                    Object.values(this.service.functions).forEach((functionObject) => {
                         functionObject.events.forEach((event) => {
                             if (event.http) {
                                 let method;
@@ -137,7 +134,7 @@ class ServerlessPluginNotification {
                     httpApiEventsPlugin.resolveConfiguration();
 
                     // eslint-disable-next-line no-restricted-syntax
-                    for (const functionData of Object.values(this.serverless.service.functions)) {
+                    for (const functionData of Object.values(this.service.functions)) {
                         // eslint-disable-next-line no-restricted-syntax
                         for (const event of functionData.events) {
                             if (!event.httpApi) {
@@ -215,7 +212,6 @@ class ServerlessPluginNotification {
             process.env.USERNAME ||
             process.env.SUDO_USER ||
             process.env.LNAME ||
-            this.custom().deployer ||
             'Unnamed deployer';
 
         return {
