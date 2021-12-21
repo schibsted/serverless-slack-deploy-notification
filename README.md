@@ -1,28 +1,39 @@
 # Serverless Slack deploy notification
+
 A Serverless plugin that sends a slack message on deployment start and finish
 
+![github checks](https://badgen.net/github/checks/schibsted/serverless-slack-deploy-notification)
+![current version @ npm](https://badgen.net/npm/v/@schibsted/serverless-slack-deploy-notification)
+![weekly downloads @ npm](https://badgen.net/npm/dw/@schibsted/serverless-slack-deploy-notification)
+![minified size](https://badgen.net//bundlephobia/min/@schibsted/serverless-slack-deploy-notification)
+
 ## Demo
+
 When deployment starts plugin posts a message like this:
 ![Deployment in progress](./assets/deployInProgress.png)
 
 When deployment finishes successfully plugin updates the first message into:
 ![Deployment finished successfully](./assets/deployFinished.png)
 
-**Sadly there's no way to detect a deployment error and send a notification then. 
+**Sadly there's no way to detect a deployment error and send a notification then.
 In that case you get stuck on the 'deployment in progress' notification**
 
 Additionally, when the deploy finishes, plugin posts app details into a thread of the notification e.g.
 ![Deployed app details](./assets/deployedAppDetails.png)
 
 ## Installation
+
 `npm install @schibsted/serverless-slack-deploy-notification --save-dev`
 
 ## Options
-#### Required:
+
+### Required
+
 - `token` - Slack API token with at least `chat.write` scope
 - `channel` - Channel ID (not channel name)
 
-#### Optional:
+### Optional
+
 - `enabled` - Turn notifications off for specific stages
 - `logo` - make the notification easier to notice by putting app logo on the side of the message
 - `travisUrl` - URL to your builds in Travis
