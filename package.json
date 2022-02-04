@@ -35,8 +35,8 @@
   },
   "homepage": "https://github.com/schibsted/serverless-slack-deploy-notification#readme",
   "devDependencies": {
-    "@babel/core": "^7.16.5",
-    "@babel/eslint-parser": "^7.16.5",
+    "@babel/core": "7.17.0",
+    "@babel/eslint-parser": "7.17.0",
     "eslint": "8.8.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-prettier": "8.3.0",
