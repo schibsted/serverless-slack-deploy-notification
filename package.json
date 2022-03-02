@@ -45,10 +45,8 @@
     "eslint-plugin-prettier": "4.0.0",
     "http-errors": "2.0.0",
     "husky": "7.0.4",
-    "install": "^0.13.0",
     "is-ci": "3.0.1",
     "lint-staged": "12.3.3",
-    "npm": "8.4.1",
     "prettier": "2.5.1"
   },
   "dependencies": {
