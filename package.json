@@ -52,7 +52,7 @@
     "is-ci": "3.0.1",
     "lint-staged": "12.3.7",
     "prettier": "2.6.2",
-    "release-it": "14.14.1"
+    "release-it": "14.14.2"
   },
   "dependencies": {
     "@slack/web-api": "^6.5.1",
