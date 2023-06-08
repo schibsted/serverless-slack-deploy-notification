@@ -36,8 +36,8 @@
   },
   "homepage": "https://github.com/schibsted/serverless-slack-deploy-notification#readme",
   "devDependencies": {
-    "@babel/core": "7.22.1",
-    "@babel/eslint-parser": "7.21.8",
+    "@babel/core": "7.22.5",
+    "@babel/eslint-parser": "7.22.5",
     "@commitlint/cli": "17.6.5",
     "@commitlint/config-conventional": "17.6.5",
     "@release-it/conventional-changelog": "5.1.1",
