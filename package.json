@@ -57,7 +57,7 @@
   "dependencies": {
     "@slack/web-api": "^6.5.1",
     "dayjs": "^1.10.7",
-    "ramda": "^0.29.0",
+    "ramda": "^0.30.0",
     "slackify-markdown": "^4.3.1"
   }
 }
