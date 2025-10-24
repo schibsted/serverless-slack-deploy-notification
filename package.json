@@ -38,9 +38,9 @@
   "devDependencies": {
     "@babel/core": "7.22.9",
     "@babel/eslint-parser": "7.28.5",
-    "@commitlint/cli": "17.8.1",
-    "@commitlint/config-conventional": "17.8.1",
-    "@release-it/conventional-changelog": "5.1.1",
+    "@commitlint/cli": "20.1.0",
+    "@commitlint/config-conventional": "20.0.0",
+    "@release-it/conventional-changelog": "10.0.1",
     "eslint": "8.57.1",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-prettier": "8.10.2",
@@ -52,7 +52,7 @@
     "is-ci": "3.0.1",
     "lint-staged": "13.3.0",
     "prettier": "2.8.8",
-    "release-it": "15.11.0"
+    "release-it": "19.0.5"
   },
   "dependencies": {
     "@slack/web-api": "^6.5.1",
