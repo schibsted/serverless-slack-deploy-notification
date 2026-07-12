@@ -55,7 +55,7 @@
     "release-it": "15.11.0"
   },
   "dependencies": {
-    "@slack/web-api": "^6.5.1",
+    "@slack/web-api": "^7.0.0",
     "dayjs": "^1.10.7",
     "ramda": "^0.32.0",
     "slackify-markdown": "^4.3.1"
